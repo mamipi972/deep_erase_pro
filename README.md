@@ -49,7 +49,7 @@ Deep Erase Pro est un plugin d'inpainting IA avancé et autonome pour GIMP 3.0. 
 **Installation**
 1. Placez le fichier deep_erase_pro.py dans le répertoire plug-ins de GIMP 3.0 (dans un sous-dossier nommé exactement deep_erase_pro).
 2. Lancez GIMP et exécutez le filtre (Filtres > Amélioration > Deep Erase Pro...). Une fenêtre apparaîtra pour vous indiquer le chemin exact du dossier partagé qui vient d'être créé automatiquement.
-3. Téléchargez le modèle lama.pt depuis Hugging Face et déposez-le dans le dossier indiqué par GIMP. [mipi77/lama-deep-erase-pro Hugging Face repository](https://huggingface.co/mipi77/lama-deep-erase-pro).
+3. Téléchargez le modèle lama.pt depuis Hugging Face et déposez-le dans le dossier indiqué par GIMP.[mipi77/lama-deep-erase-pro Hugging Face repository](https://huggingface.co/mipi77/lama-deep-erase-pro/tree/main).
 4. Relancez le filtre, il est prêt à fonctionner !
 
 ## 🛡️ Informations de Sécurité
