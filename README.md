@@ -10,9 +10,10 @@ Deep Erase Pro is an advanced, standalone AI inpainting plugin for GIMP 3.0. It 
 * **OpenCV Fallback:** Automatically switches to standard OpenCV inpainting if the AI environment cannot be loaded.
 
 **Installation**
-1. Download `deep_erase_pro.py` and place it in your GIMP 3.0 `plug-ins` directory (make sure the folder is also named `deep_erase_pro`).
-2. Download the required AI model (`lama.pt`) from the [mipi77/lama-deep-erase-pro Hugging Face repository](https://huggingface.co/mipi77/lama-deep-erase-pro).
-3. Place the `lama.pt` file inside your GIMP configuration folder at `ai_suite_shared/models/`.
+1. Place the deep_erase_pro.py file into your GIMP 3.0 plug-ins directory (inside a subfolder named exactly deep_erase_pro).
+2. Launch GIMP and run the filter (Filters > Enhance > Deep Erase Pro...). A message box will appear showing you the exact path of the shared folder that was just created automatically.
+3. Download the lama.pt model from Hugging Face and drop it into the folder indicated by GIMP. [mipi77/lama-deep-erase-pro Hugging Face repository](https://huggingface.co/mipi77/lama-deep-erase-pro).
+4. Run the filter again, it is now ready to use!
 
 ## 🛡️ Security Information
 
@@ -46,9 +47,10 @@ Deep Erase Pro est un plugin d'inpainting IA avancé et autonome pour GIMP 3.0. 
 * **Repli Automatique :** Bascule automatiquement sur l'inpainting classique d'OpenCV si l'environnement IA rencontre une erreur.
 
 **Installation**
-1. Téléchargez `deep_erase_pro.py` et placez-le dans le répertoire `plug-ins` de GIMP 3.0 (dans un dossier nommé exactement `deep_erase_pro`).
-2. Téléchargez le modèle IA requis (`lama.pt`) depuis le [dépôt Hugging Face mipi77/lama-deep-erase-pro](https://huggingface.co/mipi77/lama-deep-erase-pro).
-3. Placez le fichier `lama.pt` dans votre dossier de configuration GIMP, sous `ai_suite_shared/models/`.
+1. Placez le fichier deep_erase_pro.py dans le répertoire plug-ins de GIMP 3.0 (dans un sous-dossier nommé exactement deep_erase_pro).
+2. Lancez GIMP et exécutez le filtre (Filtres > Amélioration > Deep Erase Pro...). Une fenêtre apparaîtra pour vous indiquer le chemin exact du dossier partagé qui vient d'être créé automatiquement.
+3. Téléchargez le modèle lama.pt depuis Hugging Face et déposez-le dans le dossier indiqué par GIMP. [mipi77/lama-deep-erase-pro Hugging Face repository](https://huggingface.co/mipi77/lama-deep-erase-pro).
+4. Relancez le filtre, il est prêt à fonctionner !
 
 ## 🛡️ Informations de Sécurité
 
