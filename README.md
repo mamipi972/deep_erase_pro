@@ -76,7 +76,7 @@ The inference worker is capped at 4 GB of memory. Reduce the selection size or u
 
 ## 📄 License
 
-Apache-2.0.
+GNU General Public License v3.0
 
 ---
 
@@ -158,4 +158,4 @@ Le processus d'inférence est limité à 4 Go de mémoire. Réduisez la zone tra
 
 ## 📄 Licence
 
-Apache-2.0.
+GNU General Public License v3.0
