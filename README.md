@@ -3,6 +3,7 @@
 *[Français ci-dessous](#-français)*
 
 **Deep Erase Pro** is a GIMP 3.0 plugin that removes unwanted objects from an image using AI-powered inpainting (the **LaMa** model), with an automatic fallback to classic OpenCV inpainting if the AI step fails.
+<img width="2554" height="853" alt="image" src="https://github.com/user-attachments/assets/97f17aee-3cad-4163-9544-f5bfc675fe94" />
 
 - 🎯 Select an object, run one filter, it's erased and reconstructed from context.
 - 🧠 Uses a TorchScript-compiled version of [advimman/lama](https://github.com/advimman/lama) for AI inpainting.
@@ -85,6 +86,7 @@ GNU General Public License v3.0
 # Deep Erase Pro (Plugin GIMP)
 
 **Deep Erase Pro** est un plugin GIMP 3.0 qui supprime les éléments indésirables d'une image grâce à un inpainting par IA (le modèle **LaMa**), avec un repli automatique sur l'inpainting classique d'OpenCV si l'étape IA échoue.
+<img width="2554" height="853" alt="image" src="https://github.com/user-attachments/assets/492228cc-db24-49b8-930b-c722c6bf6dd5" />
 
 - 🎯 Sélectionnez un objet, lancez un filtre, il est effacé et reconstruit à partir du contexte.
 - 🧠 Utilise une version compilée en TorchScript de [advimman/lama](https://github.com/advimman/lama) pour l'inpainting IA.
