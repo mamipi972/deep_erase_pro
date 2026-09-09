@@ -74,6 +74,27 @@ def test_python_executable(path, timeout=PROBE_TIMEOUT):
     except Exception: 
         return False
 
+def test_python_environment(path, timeout=PROBE_TIMEOUT):
+    """Vérifie non seulement que l'interpréteur démarre, mais aussi que les
+    paquets requis (numpy, cv2, torch) y sont réellement importables.
+    Retourne (bool_ok, message_diagnostic)."""
+    if not test_python_executable(path, timeout=timeout):
+        return False, "Interpréteur Python introuvable ou non exécutable."
+    modules = list(REQUIRED_PACKAGES.values())
+    import_stmt = "; ".join(f"import {m}" for m in modules)
+    try:
+        res = subprocess.run(
+            [path, '-c', import_stmt],
+            env=env_clean(), capture_output=True, text=True,
+            timeout=timeout * 4, **_popen_kwargs()
+        )
+        if res.returncode != 0:
+            detail = (res.stderr or res.stdout or "").strip()
+            return False, detail[-800:] if detail else "Échec d'import inconnu."
+        return True, ""
+    except Exception as e:
+        return False, str(e)
+
 def find_system_python():
     candidates = set()
     env = env_clean()
@@ -397,7 +418,9 @@ if __name__ == "__main__":
             try: os.remove(worker_path)
             except OSError: pass
 
-    if "[CACHE_INVALIDATION_REQUIRED]" in output: return False, "Cache corrompu", False, ""
+    if "[CACHE_INVALIDATION_REQUIRED]" in output:
+        detail_line = next((l for l in output.splitlines() if "[CACHE_INVALIDATION_REQUIRED]" in l), "").strip()
+        return False, f"Cache corrompu (environnement Python incomplet) : {detail_line}", False, ""
     is_ai_success = "[PT_SUCCESS]" in output
     pt_error = next((line.replace("[PT_ERROR]", "").strip() for line in output.splitlines() if line.startswith("[PT_ERROR]")), "")
     return is_ai_success, output, is_ai_success, pt_error
@@ -479,16 +502,22 @@ class DeepEraseProPlugin(Gimp.PlugIn):
 
                 venv_dir, _ = get_shared_directories()
                 shared_venv_python = os.path.join(venv_dir, 'Scripts', 'python.exe') if os.name == 'nt' else os.path.join(venv_dir, 'bin', 'python3')
-                if test_python_executable(shared_venv_python):
+                env_ok, env_diag = test_python_environment(shared_venv_python)
+                if env_ok:
                     valid_python = shared_venv_python
                     with open(cache_path, 'w') as f: f.write(valid_python)
-                
+
                 if not valid_python and os.path.isfile(cache_path):
                     with open(cache_path, 'r') as f:
                         cached_env = f.read().strip()
-                        if test_python_executable(cached_env): valid_python = cached_env
+                        env_ok, env_diag = test_python_environment(cached_env)
+                        if env_ok: valid_python = cached_env
 
                 if not valid_python:
+                    # L'environnement partagé existe peut-être déjà mais avec des paquets
+                    # manquants/corrompus (env_diag contient le détail) : setup_venv()
+                    # réutilise ce même dossier et (ré)installe ce qui manque, au lieu
+                    # de se contenter de vérifier que l'exécutable démarre.
                     sys_python = find_system_python()
                     if not sys_python: raise RuntimeError("Aucun Python système trouvé.")
                     valid_python = setup_venv(sys_python)
