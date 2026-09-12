@@ -9,6 +9,8 @@
 - 🛡️ Checks the model file's size, then its SHA-256 fingerprint, and warns you if the file changed since the previous run.
 - 🔁 Falls back to OpenCV's `cv2.inpaint` if the AI step is unavailable or fails, so you always get a result.
 - ⚙️ Sets up its own isolated Python environment automatically — no manual `pip install`.
+  <img width="2554" height="853" alt="646953681-97f17aee-3cad-4163-9544-f5bfc675fe94" src="https://github.com/user-attachments/assets/d8505016-3a71-4f59-a716-fa8174135f5b" />
+
 
 ## 📋 Requirements
 
@@ -126,6 +128,9 @@ Apache-2.0.
 - 🛡️ Contrôle la taille du fichier modèle, puis son empreinte SHA-256, et vous avertit s'il a changé depuis l'exécution précédente.
 - 🔁 Repli sur `cv2.inpaint` d'OpenCV si l'étape IA est indisponible ou échoue, pour toujours obtenir un résultat.
 - ⚙️ Met en place automatiquement son propre environnement Python isolé — aucun `pip install` manuel.
+
+<img width="2554" height="853" alt="646953681-97f17aee-3cad-4163-9544-f5bfc675fe94" src="https://github.com/user-attachments/assets/552c199d-d0ba-4863-8386-dc3a746f90dd" />
+
 
 ## 📋 Prérequis
 
